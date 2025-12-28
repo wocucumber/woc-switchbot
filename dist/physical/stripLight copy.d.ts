@@ -23,4 +23,4 @@ export default class StripLight extends SwitchbotBasic {
     setColor(r: number, g: number, b: number): Promise<ResponseBase>;
     getStatus(): Promise<StripLightStatus>;
 }
-//# sourceMappingURL=stripLight.d.ts.map
+//# sourceMappingURL=stripLight%20copy.d.ts.map

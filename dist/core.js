@@ -102,7 +102,7 @@ export class SwitchbotProduct extends SwitchbotRequester {
             body = {
                 command: arg.command,
                 commandType: arg.commandType ?? "command",
-                parameter: "default"
+                parameter: arg.parameter ?? "default"
             };
         }
         return this._postRequest("1.1", "/devices/" + this.deviceId + "/commands", body);

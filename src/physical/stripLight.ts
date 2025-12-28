@@ -1,4 +1,5 @@
 import { SwitchbotBasic, type ResponseBase } from "../core.js";
+import type { StripLightStatus } from "../status.js";
 
 export default class StripLight extends SwitchbotBasic {
   turnOn() {
@@ -27,7 +28,7 @@ export default class StripLight extends SwitchbotBasic {
 
   /**
    * 
-   * @param color Must be '{0-255},{0-255},{0-255}'
+   * @param color Must be '{0-255}:{0-255}:{0-255}'
    */
   setColor(color: string): Promise<ResponseBase>;
   /**
@@ -49,7 +50,7 @@ export default class StripLight extends SwitchbotBasic {
         parsedColor.some(e => isNaN(e) || e < 0 || e > 255)
     ) {
       if (typeof r === "string")
-        throw new Error("Color must be '{0-255},{0-255},{0-255}'.");
+        throw new Error("Color must be '{0-255}:{0-255}:{0-255}'.");
       else
         throw new Error("r,g and b must be between 0 and 255.");
     }
@@ -58,5 +59,9 @@ export default class StripLight extends SwitchbotBasic {
       command: "setColor",
       parameter: parsedColor.join(":")
     });
+  }
+
+  getStatus(): Promise<StripLightStatus> {
+    return super.getStatus();
   }
 }

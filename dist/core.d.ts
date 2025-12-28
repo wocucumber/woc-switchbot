@@ -1,4 +1,3 @@
-import type { Base as StatusBase } from "./status.js";
 import type { SwitchbotDevicesResponse } from "./deviceGetter.js";
 type API_Version = "1.1";
 export interface ResponseBase {
@@ -33,7 +32,7 @@ export declare class SwitchbotProduct extends SwitchbotRequester {
     }): Promise<ResponseBase>;
 }
 export declare class SwitchbotBasic extends SwitchbotProduct {
-    getStatus(): Promise<StatusBase>;
+    getStatus(): Promise<any>;
 }
 export declare class IR_Base extends SwitchbotProduct {
     sendCustomCommand(commandName: string): Promise<ResponseBase>;

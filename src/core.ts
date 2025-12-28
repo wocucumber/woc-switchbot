@@ -1,5 +1,4 @@
 import {createHmac, randomUUID} from "crypto";
-import type { Base as StatusBase } from "./status.js";
 import type { SwitchbotDevicesResponse } from "./deviceGetter.js";
 
 type API_Version = "1.1";
@@ -130,7 +129,7 @@ export class SwitchbotProduct extends SwitchbotRequester {
       body = {
         command: arg.command,
         commandType: arg.commandType ?? "command",
-        parameter: "default"
+        parameter: arg.parameter ?? "default"
       }
     }
 
@@ -143,7 +142,7 @@ export class SwitchbotProduct extends SwitchbotRequester {
 }
 
 export class SwitchbotBasic extends SwitchbotProduct {
-  async getStatus(): Promise<StatusBase> {
+  async getStatus(): Promise<any> {
     return (await this._getRequest("1.1", "/devices/"+this.deviceId+"/status")).body;
   }
 }
