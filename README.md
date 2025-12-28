@@ -21,6 +21,9 @@ Supports both physical devices (Bot, Curtain, etc) and infrared devices.
   - Lock
   - Lock Pro
   - Lock Ultra
+- keypad
+  - Keypad
+  - Keypad Touch
 - StripLight
 - PlugMini
 
