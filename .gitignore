@@ -4,4 +4,6 @@ node_modules
 .gitignore
 supported.md
 dist/**.map
+dist/**/**.map
 __**
+dist/physical/_physical.d.ts.map

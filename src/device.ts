@@ -28,6 +28,31 @@ interface Curtain3Device extends CurtainDeviceBase {
   deviceType: "Curtain3"
 }
 
+interface HubDevice extends Base {
+  deviceType: "Hub" | "Hub Plus" | "Hub Mini" | "Hub 2" | "Hub 3"
+}
+
+interface MeterDevice extends Base {
+  deviceType: "Meter"
+}
+
+interface MeterPlusDevice extends Base {
+  deviceType: "Meter Plus"
+}
+
+interface OutdoorMeterDevice extends Base {
+  deviceType: "WoIOSensor"
+}
+
+interface MeterPro extends Base {
+  deviceType: "MeterPro"
+}
+
+interface MeterProCO2 extends Base {
+  deviceType: "MeterPro(CO2)"
+}
+
 
 export type SwitchbotDevice
-= Base | BotDevice | CurtainDevice | Curtain3Device
+= Base | BotDevice | CurtainDevice | Curtain3Device | HubDevice |
+MeterDevice | MeterPlusDevice | OutdoorMeterDevice | MeterPro | MeterProCO2;

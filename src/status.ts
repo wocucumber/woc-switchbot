@@ -75,7 +75,7 @@ export interface StripLightStatus extends Base {
   onlineStatus: OnlineStatus
 }
 
-export interface CurtainBase extends Base {
+interface CurtainBase extends Base {
   /**determines if the open position and the close position of a device have been properly calibrated or not */
   calibrate: boolean,
 
@@ -101,4 +101,41 @@ export interface CurtainStatus extends CurtainBase {
 
 export interface Curtain3Status extends CurtainBase {
   deviceType: "Curtain3"
+}
+
+interface MeterBaseStatus extends Base {
+  /**(Float) temperature in celsius */
+  temperature: number,
+  /**the current firmware version, e.g. V4.2 */
+  version: string,
+  /**(Int) Four-segment battery level division,<10%, shown as 10;10%~20%, shown as 20;20%~60%, shown as 60;≥60%, shown as 100 */
+  battery: number,
+  /**(Int) humidity percentage */
+  humidity: number
+}
+
+export interface MeterStatus extends MeterBaseStatus {
+  deviceType: "Meter",
+}
+
+export interface MeterPlusStatus extends MeterBaseStatus {
+  deviceType: "MeterPlus"
+}
+
+export interface OutdoorMeterStatus extends MeterBaseStatus {
+  deviceType: "WoIOSensor"
+}
+
+export interface MeterProStatus extends MeterBaseStatus {
+  deviceType: "MeterPro",
+
+  /**the current battery level, 0-100 */
+  bettery: number
+}
+
+export interface MeterProCO2Status extends MeterBaseStatus {
+  deviceType: "MeterPro(CO2)",
+  
+  /**(Int) CO2 ppm value, 0-9999 */
+  CO2: number
 }
