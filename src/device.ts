@@ -52,7 +52,31 @@ interface MeterProCO2 extends Base {
   deviceType: "MeterPro(CO2)"
 }
 
+interface LockBase extends Base {
+  /**determines if a Lock is grouped with another Lock or not */
+  group: boolean,
+  /**determines if a Lock is the master device or not when grouped with another Lock in Dual Lock mode */
+  master: boolean,
+  /**the name of the Lock group */
+  groupName: string,
+  /**a list of Lock device IDs such that the Lock devices are being grouped in Dual Lock mode */
+  lockDevicesIds: string[]
+}
+
+interface Lock extends LockBase {
+  deviceType: "Smart Lock"
+}
+
+interface LockPro extends LockBase {
+  deviceType: "Smart Lock Pro"
+}
+
+interface LockUltra extends LockBase {
+  deviceType: "Smart Lock Ultra"
+}
+
 
 export type SwitchbotDevice
 = Base | BotDevice | CurtainDevice | Curtain3Device | HubDevice |
-MeterDevice | MeterPlusDevice | OutdoorMeterDevice | MeterPro | MeterProCO2;
+MeterDevice | MeterPlusDevice | OutdoorMeterDevice | MeterPro | MeterProCO2 |
+Lock | LockPro | LockUltra;

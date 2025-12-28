@@ -11,6 +11,16 @@ Supports both physical devices (Bot, Curtain, etc) and infrared devices.
 ### Physical Devices
 - Bot
 - Curtain(1, 3)
+- meter
+  - Meter
+  - Meter Plus
+  - Outdoor Meter
+  - Meter Pro
+  - Meter Pro CO2
+- lock
+  - Lock
+  - Lock Pro
+  - Lock Ultra
 - StripLight
 - PlugMini
 

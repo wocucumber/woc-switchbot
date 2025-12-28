@@ -114,5 +114,34 @@ export interface MeterProCO2Status extends MeterBaseStatus {
     /**(Int) CO2 ppm value, 0-9999 */
     CO2: number;
 }
+interface LockBase extends Base {
+    /**(Int) Four-segment battery level division,<10%, shown as 10;10%~20%, shown as 20;20%~60%, shown as 60;≥60%, shown as 100 */
+    battery: number;
+    /**the current firmware version, e.g. V4.2 */
+    version: string;
+    /**(?) (Isn't this boolean?) determines if locked or not */
+    lockState: string;
+    /**(?) (Isn't this boolean?) determines if the door is closed or not */
+    doorState: string;
+    /**determines if Lock has been calibrated or not */
+    calibrate: boolean;
+}
+export interface LockStatus extends LockBase {
+    deviceType: "Smart Lock";
+}
+interface LockProBase extends LockBase {
+    /**the current battery level, 0-100 */
+    battery: number;
+    /**determines if locked or not, jammed, unlock or lock */
+    lockState: "jammed" | "unlock" | "lock";
+    /**determines if the door is closed or not, open or close */
+    doorState: "open" | "close";
+}
+export interface LockProStatus extends LockProBase {
+    deviceType: "Smart Lock Pro";
+}
+export interface LockUltraStatus extends LockBase {
+    deviceType: "Lock Ultra";
+}
 export {};
 //# sourceMappingURL=status.d.ts.map
