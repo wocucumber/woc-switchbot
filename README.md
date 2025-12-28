@@ -2,7 +2,7 @@
 Easily control your SwitchBot devices with Node.js.
 ⚠️This module supports __the SwitchBot OpenAPI__ but doesn't support Bluetooth Low Energy (BLE).
 
-## __⚠️ Now rewriting, so you can't use this. Don't clone now.__
+## __❗Now rewriting, so you can't use this. Don't clone now.__
 
 ## ⚠️ Disclaimer
 __This is an unofficial library and is not affiliated with or endorsed by SwitchBot.__ This project uses the official SwitchBot API to interact with your devices.
