@@ -110,6 +110,8 @@ interface Remote extends Base {
 
 
 export type SwitchbotDevice
-= Base | BotDevice | CurtainDevice | Curtain3Device | HubDevice |
+= 
+// Base |
+BotDevice | CurtainDevice | Curtain3Device | HubDevice |
 MeterDevice | MeterPlusDevice | OutdoorMeterDevice | MeterPro | MeterProCO2 |
 Lock | LockPro | LockUltra | Keypad | KeypadTouch | Remote;

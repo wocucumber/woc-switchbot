@@ -94,6 +94,6 @@ interface KeypadTouch extends KeypadBase {
 interface Remote extends Base {
     deviceType: "Remote";
 }
-export type SwitchbotDevice = Base | BotDevice | CurtainDevice | Curtain3Device | HubDevice | MeterDevice | MeterPlusDevice | OutdoorMeterDevice | MeterPro | MeterProCO2 | Lock | LockPro | LockUltra | Keypad | KeypadTouch | Remote;
+export type SwitchbotDevice = BotDevice | CurtainDevice | Curtain3Device | HubDevice | MeterDevice | MeterPlusDevice | OutdoorMeterDevice | MeterPro | MeterProCO2 | Lock | LockPro | LockUltra | Keypad | KeypadTouch | Remote;
 export {};
 //# sourceMappingURL=device.d.ts.map
