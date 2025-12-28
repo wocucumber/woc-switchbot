@@ -143,5 +143,11 @@ export interface LockProStatus extends LockProBase {
 export interface LockUltraStatus extends LockBase {
     deviceType: "Lock Ultra";
 }
+export interface KeypadStatus extends Base {
+    deviceType: "Keypad";
+}
+export interface KeypadTouchStatus extends Base {
+    deviceType: "Keypad Touch";
+}
 export {};
 //# sourceMappingURL=status.d.ts.map

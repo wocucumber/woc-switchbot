@@ -13,17 +13,17 @@ class LockBase extends SwitchbotBasic {
 }
 export class Lock extends LockBase {
     getStatus() {
-        return this.getStatus();
+        return super.getStatus();
     }
 }
 export class LockPro extends LockBase {
     getStatus() {
-        return this.getStatus();
+        return super.getStatus();
     }
 }
 export class LockUltra extends LockBase {
     getStatus() {
-        return this.getStatus();
+        return super.getStatus();
     }
 }
 //# sourceMappingURL=lock.js.map

@@ -63,6 +63,34 @@ interface LockPro extends LockBase {
 interface LockUltra extends LockBase {
     deviceType: "Smart Lock Ultra";
 }
-export type SwitchbotDevice = Base | BotDevice | CurtainDevice | Curtain3Device | HubDevice | MeterDevice | MeterPlusDevice | OutdoorMeterDevice | MeterPro | MeterProCO2 | Lock | LockPro | LockUltra;
+interface KeypadBase extends Base {
+    /**MAC address of the Lock that the current device is paired with */
+    lockDeviceId: string;
+    /**a list of passcodes */
+    keyList: KeypadPasscode[];
+}
+interface KeypadPasscode {
+    /**(Int) passcode ID */
+    id: number;
+    /**name of the passcode */
+    name: string;
+    /**type of the passcode. permanent, a permanent passcode. timeLimit, a temporary passcode. disposable, a one-time passcode. urgent, an emergency passcode. */
+    type: "permanent" | "timeLimit" | "disposable" | "urgent";
+    /**the passcode string encrypted with the developer secret key using the aes-128-cbc algorithm */
+    password: string;
+    /**an arbitrary number used for the encryption */
+    iv: string;
+    /**validity of the passcode. normal, the passcode is valid. expired, the passcode is invalid. */
+    status: "normal" | "expired";
+    /**(Long) the time when the passcode is generated */
+    createTime: number;
+}
+interface Keypad extends KeypadBase {
+    deviceType: "Keypad";
+}
+interface KeypadTouch extends KeypadBase {
+    deviceType: "Keypad Touch";
+}
+export type SwitchbotDevice = Base | BotDevice | CurtainDevice | Curtain3Device | HubDevice | MeterDevice | MeterPlusDevice | OutdoorMeterDevice | MeterPro | MeterProCO2 | Lock | LockPro | LockUltra | Keypad | KeypadTouch;
 export {};
 //# sourceMappingURL=device.d.ts.map

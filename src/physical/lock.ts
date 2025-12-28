@@ -16,16 +16,16 @@ class LockBase extends SwitchbotBasic {
 
 export class Lock extends LockBase {
   getStatus(): Promise<LockStatus> {
-    return this.getStatus();
+    return super.getStatus();
   }
 }
 export class LockPro extends LockBase {
   getStatus(): Promise<LockProStatus> {
-    return this.getStatus();
+    return super.getStatus();
   }
 }
 export class LockUltra extends LockBase {
   getStatus(): Promise<LockUltraStatus> {
-    return this.getStatus();
+    return super.getStatus();
   }
 }
