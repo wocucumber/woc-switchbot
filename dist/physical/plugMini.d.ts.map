@@ -1,1 +1,0 @@
-{"version":3,"file":"plugMini.d.ts","sourceRoot":"","sources":["../../src/physical/plugMini.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,YAAY,CAAC;AAC5C,OAAO,KAAK,EAAE,cAAc,EAAE,MAAM,cAAc,CAAC;AAEnD,MAAM,CAAC,OAAO,OAAO,QAAS,SAAQ,cAAc;IAClD,MAAM;IAGN,OAAO;IAGP,MAAM;IAIN,SAAS,IAAI,OAAO,CAAC,cAAc,CAAC;CAGrC"}
