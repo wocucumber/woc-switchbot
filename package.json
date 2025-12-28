@@ -1,9 +1,9 @@
 {
-  "name": "shike-switchbot",
-  "version": "0.0.1",
+  "name": "woc-switchbot",
+  "version": "0.1.0",
   "description": "",
   "license": "ISC",
-  "author": "",
+  "author": "wocucumber",
   "type": "module",
   "main": "index.js",
   "scripts": {

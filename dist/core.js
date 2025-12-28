@@ -1,5 +1,5 @@
 import { createHmac, randomUUID } from "crypto";
-class Config {
+export class Config {
     _token;
     get token() {
         return this._token;
@@ -89,12 +89,23 @@ export class SwitchbotProduct extends SwitchbotRequester {
         super(config);
         this._deviceId = deviceId;
     }
-    _sendCommand({ command, parameter = "default", commandType = "command" }) {
-        return this._postRequest("1.1", "/devices/" + this.deviceId + "/commands", {
-            command,
-            parameter,
-            commandType
-        });
+    _sendCommand(arg) {
+        let body;
+        if (typeof arg === "string") {
+            body = {
+                command: arg,
+                commandType: "command",
+                parameter: "default"
+            };
+        }
+        else {
+            body = {
+                command: arg.command,
+                commandType: arg.commandType ?? "command",
+                parameter: "default"
+            };
+        }
+        return this._postRequest("1.1", "/devices/" + this.deviceId + "/commands", body);
     }
 }
 export class SwitchbotBasic extends SwitchbotProduct {
@@ -124,3 +135,4 @@ export class SwitchBotAPI extends Config {
         return (await this.getRequest("1.1", "/devices")).body;
     }
 }
+//# sourceMappingURL=core.js.map

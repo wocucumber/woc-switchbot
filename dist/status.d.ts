@@ -69,3 +69,5 @@ export interface CurtainStatus extends CurtainBase {
 export interface Curtain3Status extends CurtainBase {
     deviceType: "Curtain3";
 }
+export {};
+//# sourceMappingURL=status.d.ts.map

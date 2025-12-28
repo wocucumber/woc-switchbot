@@ -3,4 +3,5 @@ tsconfig.json
 node_modules
 .gitignore
 supported.md
+dist/**.map
 _**

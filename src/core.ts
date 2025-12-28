@@ -5,13 +5,13 @@ import type { SwitchbotDevicesResponse } from "./deviceGetter.js";
 type API_Version = "1.1";
 type RequestMethod = "GET" | "POST" | "PUT" | "DELETE";
 
-interface ResponseBase {
+export interface ResponseBase {
   statusCode: number,
   message: string,
   body: any
 }
 
-class Config {
+export class Config {
   private _token: string;
   get token(): string {
     return this._token;
@@ -115,15 +115,29 @@ export class SwitchbotProduct extends SwitchbotRequester {
     super(config);
     this._deviceId = deviceId;
   }
-  _sendCommand({command, parameter="default", commandType="command"}: {command: string, parameter?: string, commandType?: string}) {
+  _sendCommand(command: string): Promise<ResponseBase>;
+  _sendCommand({command, parameter, commandType}: {command: string, parameter?: any, commandType?: string}): Promise<ResponseBase>;
+  _sendCommand(arg: string | {command: string, parameter?: any, commandType?: string}) {
+    let body: {command: string, parameter: any, commandType: string};
+
+    if (typeof arg === "string") {
+      body = {
+        command: arg,
+        commandType: "command",
+        parameter: "default"
+      }
+    } else {
+      body = {
+        command: arg.command,
+        commandType: arg.commandType ?? "command",
+        parameter: "default"
+      }
+    }
+
     return this._postRequest(
       "1.1",
       "/devices/"+this.deviceId+"/commands",
-      {
-        command,
-        parameter,
-        commandType
-      }
+      body
     );
   }
 }

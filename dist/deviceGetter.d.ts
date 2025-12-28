@@ -16,3 +16,4 @@ export default class DeviceGetter extends SwitchbotRequester {
     getDevices(): Promise<SwitchbotDevicesResponse>;
 }
 export {};
+//# sourceMappingURL=deviceGetter.d.ts.map

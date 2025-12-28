@@ -28,3 +28,4 @@ interface Curtain3Device extends CurtainDeviceBase {
 }
 export type SwitchbotDevice = Base | BotDevice | CurtainDevice | Curtain3Device;
 export {};
+//# sourceMappingURL=device.d.ts.map

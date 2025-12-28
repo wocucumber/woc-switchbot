@@ -1,12 +1,12 @@
 import type { Base as StatusBase } from "./status.js";
 import type { SwitchbotDevicesResponse } from "./deviceGetter.js";
 type API_Version = "1.1";
-interface ResponseBase {
+export interface ResponseBase {
     statusCode: number;
     message: string;
     body: any;
 }
-declare class Config {
+export declare class Config {
     private _token;
     get token(): string;
     private _secret;
@@ -25,9 +25,10 @@ export declare class SwitchbotProduct extends SwitchbotRequester {
     private _deviceId;
     get deviceId(): string;
     constructor(config: Config, deviceId: string);
+    _sendCommand(command: string): Promise<ResponseBase>;
     _sendCommand({ command, parameter, commandType }: {
         command: string;
-        parameter?: string;
+        parameter?: any;
         commandType?: string;
     }): Promise<ResponseBase>;
 }
@@ -44,3 +45,4 @@ export declare class SwitchBotAPI extends Config {
     getDevices(): Promise<SwitchbotDevicesResponse>;
 }
 export {};
+//# sourceMappingURL=core.d.ts.map
