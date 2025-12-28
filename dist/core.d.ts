@@ -1,4 +1,5 @@
 import type { Base as StatusBase } from "./status.js";
+import type { SwitchbotDevicesResponse } from "./deviceGetter.js";
 type API_Version = "1.1";
 interface ResponseBase {
     statusCode: number;
@@ -13,7 +14,6 @@ declare class Config {
     constructor(token: string, secret: string);
 }
 export declare class SwitchbotRequester {
-    #private;
     private _token;
     private _secret;
     constructor(config: Config);
@@ -36,5 +36,11 @@ export declare class SwitchbotBasic extends SwitchbotProduct {
 }
 export declare class IR_Base extends SwitchbotProduct {
     sendCustomCommand(commandName: string): Promise<ResponseBase>;
+}
+export declare class SwitchBotAPI extends Config {
+    private request;
+    private getRequest;
+    private postRequest;
+    getDevices(): Promise<SwitchbotDevicesResponse>;
 }
 export {};

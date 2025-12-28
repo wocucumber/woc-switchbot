@@ -18,6 +18,47 @@ class Config {
     }
 }
 const API_ENDPOINT = "https://api.switch-bot.com";
+function generateHeader(token, secret) {
+    const t = Date.now();
+    const nonce = randomUUID();
+    const data = token + t + nonce;
+    const signTerm = createHmac('sha256', secret)
+        .update(Buffer.from(data, 'utf-8'))
+        .digest();
+    const sign = signTerm.toString("base64");
+    return {
+        "Authorization": token,
+        "sign": sign,
+        "nonce": nonce,
+        "t": t.toString(),
+    };
+}
+function API_request(token, secret, version, method, url, rawBody) {
+    return new Promise((resolve, reject) => {
+        if (!url.startsWith("/"))
+            throw new Error("URL must start with '/'.");
+        const config = {
+            method,
+            headers: {
+                ...generateHeader(token, secret)
+            }
+        };
+        if (method === "POST") {
+            const body = rawBody === undefined ? "{}" : JSON.stringify(rawBody);
+            config.headers["Content-Length"] = body.length;
+            config.headers["Content-Type"] = "application/json; charset=utf8";
+            config.body = body;
+            config.port = 443;
+        }
+        fetch(API_ENDPOINT + "/v" + version + url, config).then(e => {
+            e.json().then(json => {
+                resolve(json);
+            });
+        }).catch(reason => {
+            reject(reason);
+        });
+    });
+}
 export class SwitchbotRequester {
     _token;
     _secret;
@@ -29,46 +70,8 @@ export class SwitchbotRequester {
         this._token = config.token;
         this._secret = config.secret;
     }
-    get #header() {
-        const t = Date.now();
-        const nonce = randomUUID();
-        const data = this._token + t + nonce;
-        const signTerm = createHmac('sha256', this._secret)
-            .update(Buffer.from(data, 'utf-8'))
-            .digest();
-        const sign = signTerm.toString("base64");
-        return {
-            "Authorization": this._token,
-            "sign": sign,
-            "nonce": nonce,
-            "t": t.toString(),
-        };
-    }
     request(version, method, url, rawBody) {
-        return new Promise((resolve, reject) => {
-            if (!url.startsWith("/"))
-                throw new Error("URL must start with '/'.");
-            const config = {
-                method,
-                headers: {
-                    ...this.#header
-                }
-            };
-            if (method === "POST") {
-                const body = rawBody === undefined ? "{}" : JSON.stringify(rawBody);
-                config.headers["Content-Length"] = body.length;
-                config.headers["Content-Type"] = "application/json; charset=utf8";
-                config.body = body;
-                config.port = 443;
-            }
-            fetch(API_ENDPOINT + "/v" + version + url, config).then(e => {
-                e.json().then(json => {
-                    resolve(json);
-                });
-            }).catch(reason => {
-                reject(reason);
-            });
-        });
+        return API_request(this._token, this._secret, version, method, url, rawBody);
     }
     _getRequest(version, url) {
         return this.request(version, "GET", url);
@@ -105,5 +108,19 @@ export class IR_Base extends SwitchbotProduct {
             command: commandName,
             commandType: "customize"
         });
+    }
+}
+export class SwitchBotAPI extends Config {
+    request(version, method, url, rawBody) {
+        return API_request(this.token, this.secret, version, method, url, rawBody);
+    }
+    getRequest(version, url) {
+        return this.request(version, "GET", url);
+    }
+    postRequest(version, url, body) {
+        return this.request(version, "POST", url, body);
+    }
+    async getDevices() {
+        return (await this.getRequest("1.1", "/devices")).body;
     }
 }
