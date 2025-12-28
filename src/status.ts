@@ -103,6 +103,24 @@ export interface Curtain3Status extends CurtainBase {
   deviceType: "Curtain3"
 }
 
+export interface Hub2Status extends Base {
+  /**(Float) temperature in celsius*/
+  temperature: number,
+  /**(Int) humidity percentage */
+  humidity: number,
+  /**(Int) the level of illuminance of the ambience light, 1~20 */
+  lightLevel: number,
+  /**the current firmware version, e.g. V4.2 */
+  version: string
+}
+
+export interface Hub3Status extends Hub2Status {
+  /** determines if motion is detected */
+  moveDetected: boolean,
+  /**the connection status of the device. online or offline */
+  onlineStatus: "online" | "offline"
+}
+
 interface MeterBaseStatus extends Base {
   /**(Float) temperature in celsius */
   temperature: number,
