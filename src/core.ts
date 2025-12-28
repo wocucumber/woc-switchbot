@@ -159,3 +159,4 @@ export class SwitchBotAPI extends Config {
     return (await this.getRequest("1.1", "/devices")).body;
   }
 }
+
