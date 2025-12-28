@@ -1,11 +1,11 @@
 # woc-switchbot
 Easily control your SwitchBot devices with Node.js.
-⚠️This module supports *the SwitchBot OpenAPI* but doesn't support Bluetooth Low Energy (BLE).
+⚠️This module supports __the SwitchBot OpenAPI__ but doesn't support Bluetooth Low Energy (BLE).
 
-## *⚠️ Now rewriting, so you can't use this. Don't clone now.*
+## __⚠️ Now rewriting, so you can't use this. Don't clone now.__
 
 ## ⚠️ Disclaimer
-**This is an unofficial library and is not affiliated with or endorsed by SwitchBot.** This project uses the official SwitchBot API to interact with your devices.
+__This is an unofficial library and is not affiliated with or endorsed by SwitchBot.__ This project uses the official SwitchBot API to interact with your devices.
 
 
 ## Supported Devices
