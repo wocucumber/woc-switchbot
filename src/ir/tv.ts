@@ -1,36 +1,36 @@
-import { IR_Base } from "../core.js";
+import { IR_Base, type IR_CommandResponse } from "../core.js";
 
 export default class TV extends IR_Base {
   /**If your TV remote controller has only power button, you should use this.  */
-  togglePower() {
+  togglePower(): Promise<IR_CommandResponse> {
     return this.turnOn();
   }
   /**If your TV remote controller has only power button, you should use this.togglePower. */
-  turnOn() {
+  turnOn(): Promise<IR_CommandResponse> {
     return this._sendCommand("turnOn");
   }
   /**If your TV remote controller has only power button, you should use this.togglePower. */
-  turnOff() {
+  turnOff(): Promise<IR_CommandResponse> {
     return this._sendCommand("turnOff");
   }
 
-  setChannel(channel: number) {
+  setChannel(channel: number): Promise<IR_CommandResponse> {
     return this._sendCommand({
       command: "SetChannel",
       parameter: channel
     });
   }
 
-  volumeAdd() {
+  volumeAdd(): Promise<IR_CommandResponse> {
     return this._sendCommand("volumeAdd");
   }
-  volumeDown() {
+  volumeDown(): Promise<IR_CommandResponse> {
     return this._sendCommand("volumeSub");
   }
-  channelAdd() {
+  channelAdd(): Promise<IR_CommandResponse> {
     return this._sendCommand("channelAdd");
   }
-  channelDown() {
+  channelDown(): Promise<IR_CommandResponse> {
     return this._sendCommand("channelSub");
   }
 }

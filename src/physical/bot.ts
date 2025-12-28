@@ -1,14 +1,15 @@
+import type { CommandResponse } from "../core.js";
 import { SwitchbotBasic } from "../core.js";
 import type { BotStatus } from "../status.js";
 
 export default class Bot extends SwitchbotBasic {
-  turnOn() {
+  turnOn(): Promise<CommandResponse> {
     return this._sendCommand("turnOn");
   }
-  turnOff() {
+  turnOff(): Promise<CommandResponse> {
     return this._sendCommand("turnOff");
   }
-  press() {
+  press(): Promise<CommandResponse> {
     return this._sendCommand("press");
   }
 

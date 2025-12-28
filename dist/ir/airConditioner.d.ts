@@ -1,4 +1,4 @@
-import { IR_Base } from "../core.js";
+import { IR_Base, type IR_CommandResponse } from "../core.js";
 declare enum AIR_CONDITIONER_MODE {
     AUTO = 1,
     COOL = 2,
@@ -26,8 +26,8 @@ export default class AirConditioner extends IR_Base {
     static get MODE(): typeof AIR_CONDITIONER_MODE;
     static get FAN_SPEED(): typeof AIR_CONDITIONER_FAN_SPEED;
     static get POWER(): typeof AIR_CONDITIONER_POWER;
-    set({ temperature, mode, fanSpeed, power }: SetArgment): Promise<import("../core.js").ResponseBase>;
-    stop(): Promise<import("../core.js").ResponseBase>;
+    set({ temperature, mode, fanSpeed, power }: SetArgment): Promise<IR_CommandResponse>;
+    stop(): Promise<IR_CommandResponse>;
 }
 export {};
 //# sourceMappingURL=airConditioner.d.ts.map

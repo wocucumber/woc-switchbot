@@ -122,6 +122,22 @@ export class IR_Base extends SwitchbotProduct {
     }
 }
 export class SwitchBotAPI extends Config {
+    configCache;
+    constructor(token, secret) {
+        if (typeof token !== "string") {
+            super(token.token, token.secret);
+            this.configCache = token;
+        }
+        else if (secret !== undefined) {
+            super(token, secret);
+            this.configCache = new Config(token, secret);
+        }
+        else
+            throw new Error("Secret is required.");
+    }
+    get config() {
+        return this.configCache;
+    }
     request(version, method, url, rawBody) {
         return API_request(this.token, this.secret, version, method, url, rawBody);
     }

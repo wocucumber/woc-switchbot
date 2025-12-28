@@ -1,9 +1,10 @@
+import type { CommandResponse } from "../core.js";
 import { SwitchbotBasic } from "../core.js";
 import type { PlugMiniStatus } from "../status.js";
 export default class PlugMini extends SwitchbotBasic {
-    turnOn(): Promise<import("../core.js").ResponseBase>;
-    turnOff(): Promise<import("../core.js").ResponseBase>;
-    toggle(): Promise<import("../core.js").ResponseBase>;
+    turnOn(): Promise<CommandResponse>;
+    turnOff(): Promise<CommandResponse>;
+    toggle(): Promise<CommandResponse>;
     getStatus(): Promise<PlugMiniStatus>;
 }
 //# sourceMappingURL=plugMini.d.ts.map

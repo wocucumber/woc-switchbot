@@ -1,3 +1,4 @@
+import type { CommandResponse } from "../core.js";
 import { SwitchbotBasic } from "../core.js";
 import type { Curtain3Status, CurtainStatus } from "../status.js";
 declare enum CURTAIN_MODE {
@@ -13,12 +14,12 @@ interface PositionArgument {
 }
 declare class CurtainBase extends SwitchbotBasic {
     static get MODE(): typeof CURTAIN_MODE;
-    setPosition({ index, mode, position }: PositionArgument): Promise<import("../core.js").ResponseBase>;
+    setPosition({ index, mode, position }: PositionArgument): Promise<CommandResponse>;
     /**equivalent to set position to 0 */
-    turnOn(): Promise<import("../core.js").ResponseBase>;
+    turnOn(): Promise<CommandResponse>;
     /**equivalent to set position to 100 */
-    turnOff(): Promise<import("../core.js").ResponseBase>;
-    pause(): Promise<import("../core.js").ResponseBase>;
+    turnOff(): Promise<CommandResponse>;
+    pause(): Promise<CommandResponse>;
 }
 export declare class Curtain extends CurtainBase {
     getStatus(): Promise<CurtainStatus>;

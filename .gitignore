@@ -11,3 +11,4 @@ __**
 *.d.ts.map
 
 dist/physical/_physical.d.ts.map
+.vscode

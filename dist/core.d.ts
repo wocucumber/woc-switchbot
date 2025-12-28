@@ -5,6 +5,13 @@ export interface ResponseBase {
     message: string;
     body: any;
 }
+export interface CommandResponse {
+    statusCode: number;
+    body: any;
+    message: string;
+}
+export interface IR_CommandResponse extends CommandResponse {
+}
 export declare class Config {
     private _token;
     get token(): string;
@@ -18,7 +25,7 @@ export declare class SwitchbotRequester {
     constructor(config: Config);
     private request;
     _getRequest(version: API_Version, url: string): Promise<ResponseBase>;
-    _postRequest(version: API_Version, url: string, body: object): Promise<ResponseBase>;
+    _postRequest(version: API_Version, url: string, body?: object): Promise<ResponseBase>;
 }
 export declare class SwitchbotProduct extends SwitchbotRequester {
     private _deviceId;
@@ -38,6 +45,10 @@ export declare class IR_Base extends SwitchbotProduct {
     sendCustomCommand(commandName: string): Promise<ResponseBase>;
 }
 export declare class SwitchBotAPI extends Config {
+    private configCache;
+    constructor(config: Config);
+    constructor(token: string, secret: string);
+    get config(): Config;
     private request;
     private getRequest;
     private postRequest;

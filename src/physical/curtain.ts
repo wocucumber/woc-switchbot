@@ -1,3 +1,4 @@
+import type { CommandResponse } from "../core.js";
 import { SwitchbotBasic } from "../core.js";
 import type { Curtain3Status, CurtainStatus } from "../status.js";
 
@@ -19,7 +20,7 @@ class CurtainBase extends SwitchbotBasic {
     return CURTAIN_MODE;
   }
 
-  setPosition({index=0, mode=CurtainBase.MODE.DefaultMode, position}: PositionArgument) {
+  setPosition({index=0, mode=CurtainBase.MODE.DefaultMode, position}: PositionArgument): Promise<CommandResponse> {
     if (typeof position !== "number") {
       position = Number(position);
       if (isNaN(position))
@@ -36,14 +37,14 @@ class CurtainBase extends SwitchbotBasic {
   }
 
   /**equivalent to set position to 0 */
-  turnOn() {
+  turnOn(): Promise<CommandResponse> {
     return this._sendCommand("turnOn");
   }
   /**equivalent to set position to 100 */
-  turnOff() {
+  turnOff(): Promise<CommandResponse> {
     return this._sendCommand("turnOff");
   }
-  pause() {
+  pause(): Promise<CommandResponse> {
     return this._sendCommand("pause");
   }
 }

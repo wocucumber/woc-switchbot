@@ -1,4 +1,4 @@
-import { IR_Base } from "../core.js";
+import { IR_Base, type IR_CommandResponse } from "../core.js";
 
 
 enum AIR_CONDITIONER_MODE {
@@ -37,13 +37,13 @@ export default class AirConditioner extends IR_Base {
     return AIR_CONDITIONER_POWER;
   }
 
-  set({temperature, mode, fanSpeed=AirConditioner.FAN_SPEED.AUTO, power=AirConditioner.POWER.ON}: SetArgment) {
+  set({temperature, mode, fanSpeed=AirConditioner.FAN_SPEED.AUTO, power=AirConditioner.POWER.ON}: SetArgment): Promise<IR_CommandResponse> {
     return this._sendCommand({
       command: "setAll",
       parameter: temperature+","+mode+","+fanSpeed+","+power
     });
   }
-  stop() {
+  stop(): Promise<IR_CommandResponse> {
     return this.set({temperature: 20, mode: AirConditioner.MODE.HEAT, power: AirConditioner.POWER.OFF});
   }
 }

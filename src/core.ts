@@ -9,6 +9,15 @@ export interface ResponseBase {
   message: string,
   body: any
 }
+export interface CommandResponse {
+  statusCode: number,
+  body: any,
+  message: string
+}
+export interface IR_CommandResponse extends CommandResponse {
+  
+}
+
 
 export class Config {
   private _token: string;
@@ -99,7 +108,7 @@ export class SwitchbotRequester {
   _getRequest(version: API_Version, url: string) {
     return this.request(version, "GET", url);
   }
-  _postRequest(version: API_Version, url: string, body: object) {
+  _postRequest(version: API_Version, url: string, body?: object) {
     return this.request(version, "POST", url, body);
   }
 }
@@ -157,6 +166,24 @@ export class IR_Base extends SwitchbotProduct {
 }
 
 export class SwitchBotAPI extends Config {
+  private configCache: Config;
+
+  constructor(config: Config)
+  constructor(token: string, secret: string)
+  constructor(token: string | Config, secret?: string) {
+    if (typeof token !== "string") {
+      super(token.token, token.secret);
+      this.configCache = token;
+    } else if (secret !== undefined) {
+      super(token, secret);
+      this.configCache = new Config(token, secret);
+    } else throw new Error("Secret is required.");
+  }
+
+  get config() {
+    return this.configCache;
+  }
+  
   private request(version: API_Version, method: RequestMethod, url: string, rawBody?: object): Promise<ResponseBase> {
     return API_request(this.token, this.secret, version, method, url, rawBody);
   }

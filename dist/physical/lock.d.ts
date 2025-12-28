@@ -1,10 +1,11 @@
+import type { CommandResponse } from "../core.js";
 import { SwitchbotBasic } from "../core.js";
 import type { LockProStatus, LockStatus, LockUltraStatus } from "../status.js";
 declare class LockBase extends SwitchbotBasic {
-    lock(): Promise<import("../core.js").ResponseBase>;
-    unlock(): Promise<import("../core.js").ResponseBase>;
+    lock(): Promise<CommandResponse>;
+    unlock(): Promise<CommandResponse>;
     /**disengage deadbolt or latch */
-    deadbolt(): Promise<import("../core.js").ResponseBase>;
+    deadbolt(): Promise<CommandResponse>;
 }
 export declare class Lock extends LockBase {
     getStatus(): Promise<LockStatus>;
