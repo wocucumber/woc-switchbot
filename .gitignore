@@ -1,6 +1,7 @@
-switchbot_copy.js
 eslint.config.js
 tsconfig.json
 node_modules
 .gitignore
 supported.md
+_**
+src
