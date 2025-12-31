@@ -9,4 +9,3 @@ export class KeypadTouch extends SwitchbotBasic {
         return super.getStatus();
     }
 }
-//# sourceMappingURL=keypad.js.map

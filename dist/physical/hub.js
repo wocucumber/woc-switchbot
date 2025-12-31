@@ -9,4 +9,3 @@ export class Hub3 extends SwitchbotBasic {
         return super.getStatus();
     }
 }
-//# sourceMappingURL=hub.js.map

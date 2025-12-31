@@ -29,4 +29,3 @@ export default function generateIdFile(type, devices) {
     }
     return res.join("\n");
 }
-//# sourceMappingURL=generateIdFile.js.map

@@ -48,4 +48,3 @@ export default class StripLight extends SwitchbotBasic {
         return super.getStatus();
     }
 }
-//# sourceMappingURL=stripLight.js.map

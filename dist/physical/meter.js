@@ -24,4 +24,3 @@ export class MeterProCO2 extends SwitchbotBasic {
         return super.getStatus();
     }
 }
-//# sourceMappingURL=meter.js.map

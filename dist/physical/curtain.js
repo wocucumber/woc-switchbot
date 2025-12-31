@@ -44,4 +44,3 @@ export class Curtain3 extends CurtainBase {
         return super.getStatus();
     }
 }
-//# sourceMappingURL=curtain.js.map

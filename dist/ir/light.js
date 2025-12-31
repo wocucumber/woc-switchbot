@@ -13,4 +13,3 @@ export default class Light extends IR_Base {
         return this._sendCommand("brightnessDown");
     }
 }
-//# sourceMappingURL=light.js.map

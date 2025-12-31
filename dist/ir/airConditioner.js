@@ -39,4 +39,3 @@ export default class AirConditioner extends IR_Base {
         return this.set({ temperature: 20, mode: AirConditioner.MODE.HEAT, power: AirConditioner.POWER.OFF });
     }
 }
-//# sourceMappingURL=airConditioner.js.map

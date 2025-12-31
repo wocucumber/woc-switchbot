@@ -31,4 +31,3 @@ export default class TV extends IR_Base {
         return this._sendCommand("channelSub");
     }
 }
-//# sourceMappingURL=tv.js.map

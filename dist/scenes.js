@@ -7,4 +7,3 @@ export default class Scenes extends SwitchbotRequester {
         return this._postRequest("1.1", "/scenes/" + sceneId + "/execute");
     }
 }
-//# sourceMappingURL=scenes.js.map

@@ -13,4 +13,3 @@ export default class Bot extends SwitchbotBasic {
         return super.getStatus();
     }
 }
-//# sourceMappingURL=bot.js.map

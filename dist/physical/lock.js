@@ -26,4 +26,3 @@ export class LockUltra extends LockBase {
         return super.getStatus();
     }
 }
-//# sourceMappingURL=lock.js.map

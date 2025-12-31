@@ -13,4 +13,3 @@ export default class PlugMini extends SwitchbotBasic {
         return super.getStatus();
     }
 }
-//# sourceMappingURL=plugMini.js.map
