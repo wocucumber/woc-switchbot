@@ -27,7 +27,7 @@ sb.getDevices().then(devices => {
 });
 
 // create a bot instance
-const bot = new Bot(conf, "xxxxxxxxxx");
+const bot = new Bot(conf, "xxxxxxxx");
 // get status of the bot
 bot.getStatus().then(status => {
   console.log("status:", status);
@@ -52,7 +52,7 @@ stripLight.setColor(255, 0, 0).then(e => {
 });
 ```
 
-## Supported Devices
+## ✅Supported Devices
 Supports both physical devices (Bot, Curtain, etc) and infrared devices.
 ### Physical Devices
 - Bot

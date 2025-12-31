@@ -2,6 +2,7 @@ eslint.config.js
 tsconfig.json
 node_modules
 .gitignore
+.npmignore
 supported.md
 dist/**.map
 dist/**/**.map
@@ -10,5 +11,4 @@ __**
 *.js.map
 *.d.ts.map
 
-dist/physical/_physical.d.ts.map
 .vscode
