@@ -1,4 +1,5 @@
 import { createHmac, randomUUID } from "crypto";
+export const SUCCESS_CODE = 100;
 export class Config {
     _token;
     get token() {
@@ -89,7 +90,7 @@ export class SwitchbotProduct extends SwitchbotRequester {
         super(config);
         this._deviceId = deviceId;
     }
-    _sendCommand(arg) {
+    async _sendCommand(arg) {
         let body;
         if (typeof arg === "string") {
             body = {
@@ -105,7 +106,11 @@ export class SwitchbotProduct extends SwitchbotRequester {
                 parameter: arg.parameter ?? "default"
             };
         }
-        return this._postRequest("1.1", "/devices/" + this.deviceId + "/commands", body);
+        const res = await this._postRequest("1.1", "/devices/" + this.deviceId + "/commands", body);
+        if (res.statusCode !== SUCCESS_CODE) {
+            throw new Error("StatusCodeError - statusCode: " + res.statusCode + ", response: " + JSON.stringify(res, null, 2));
+        }
+        return res;
     }
 }
 export class SwitchbotBasic extends SwitchbotProduct {

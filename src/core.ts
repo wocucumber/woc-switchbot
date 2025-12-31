@@ -1,6 +1,8 @@
 import {createHmac, randomUUID} from "crypto";
 import type { SwitchbotDevicesResponse } from "./deviceGetter.js";
 
+export const SUCCESS_CODE = 100;
+
 type API_Version = "1.1";
 type RequestMethod = "GET" | "POST" | "PUT" | "DELETE";
 
@@ -125,7 +127,7 @@ export class SwitchbotProduct extends SwitchbotRequester {
   }
   _sendCommand(command: string): Promise<ResponseBase>;
   _sendCommand({command, parameter, commandType}: {command: string, parameter?: any, commandType?: string}): Promise<ResponseBase>;
-  _sendCommand(arg: string | {command: string, parameter?: any, commandType?: string}) {
+  async _sendCommand(arg: string | {command: string, parameter?: any, commandType?: string}) {
     let body: {command: string, parameter: any, commandType: string};
 
     if (typeof arg === "string") {
@@ -142,11 +144,17 @@ export class SwitchbotProduct extends SwitchbotRequester {
       }
     }
 
-    return this._postRequest(
+    const res = await this._postRequest(
       "1.1",
       "/devices/"+this.deviceId+"/commands",
       body
     );
+
+    if (res.statusCode !== SUCCESS_CODE) {
+      throw new Error("StatusCodeError - statusCode: "+res.statusCode+", response: "+JSON.stringify(res, null, 2));
+    }
+
+    return res;
   }
 }
 

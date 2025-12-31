@@ -1,4 +1,5 @@
 import type { SwitchbotDevicesResponse } from "./deviceGetter.js";
+export declare const SUCCESS_CODE = 100;
 type API_Version = "1.1";
 export interface ResponseBase {
     statusCode: number;
